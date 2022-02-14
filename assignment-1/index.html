@@ -28,9 +28,9 @@
               <th>Section</td>
               <th>Git Repo</th>
               <th>Progress</th>
-              <th v-bind:colspan="col2">Topics Covered</th>
+              <th v-bind:colspan="col">Topics Covered</th>
           </tr>
-          <tr v-for="log in logs">
+          <tr v-for="log in alllogs">
             <td>{{log.date}}</td>
             <td>{{log.day}}</td>
             <td>{{log.section}}</td>
