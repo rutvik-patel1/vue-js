@@ -6,11 +6,7 @@ const App = Vue.createApp({
         }
     },
     methods: {
-        col(){
-            let max = this.logs().length
-            console.log(max)
-            return max;
-        },
+        
         updateColor(event){
             let color = event.target.value
             if(color == 'red' || color == 'green' || color == 'blue'){
