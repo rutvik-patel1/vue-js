@@ -1,0 +1,42 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+}
+table{
+    border: 1px solid #000000;
+    width: 100%;
+    border-collapse: collapse;
+    text-align:center;
+}
+
+td,th{
+    border: 1px solid #000000;
+    padding: 5px; 
+}
+
+td{
+    padding: 15px 5px;
+}
+
+h1{
+    text-align:center;
+    color:#123456;
+}
+
+select{
+    border: 1px solid #000000;
+    margin-bottom:25px;
+    padding:5px;
+}
+
+.header{
+  text-align:center;
+}
+
+progress{
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+
+.content{
+    background-color: rgb(255, 255, 255)
+}
