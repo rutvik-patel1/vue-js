@@ -1,8 +1,35 @@
 const App = Vue.createApp({
     data(){
         return{
-            colorval : 'white',
-            textcolor : 'black'
+            colorVal : 'white',
+            textColor : 'black',
+            colors : ['white','blue','red','green','yellow'],
+            allLogs : [
+                {
+                    date : '2022-02-01',
+                    day : 'Monday',
+                    section : 1,
+                    gitRepo : 'https://github.com/1',
+                    pregress: 80,
+                    topics : ['overvieew' , 'lifecycle' , 'events']
+                },
+                {
+                    date : '2022-02-02',
+                    day : 'Tuesday',
+                    section : 2,
+                    gitRepo : 'https://github.com/2',
+                    pregress: 40,
+                    topics : ['mehtod','computed','events','watchs','propes','styling']
+                },
+                {
+                    date : '2022-02-03',
+                    day : 'Wednesday',
+                    section : 3,
+                    gitRepo : 'https://github.com/3',
+                    pregress: 10,
+                    topics : ['overview','lifecycle','events','watchs','propes','styling','props']
+                },
+            ]
         }
     },
     methods: {
@@ -10,83 +37,28 @@ const App = Vue.createApp({
         updateColor(event){
             let color = event.target.value
             if(color == 'red' || color == 'green' || color == 'blue'){
-                this.textcolor = 'white';
+                this.textColor = 'white';
             }
             else{
-                this.textcolor = 'black';
+                this.textColor = 'black';
             }
-            this.colorval = color; 
-            console.log(this.colorval)
+            this.colorVal = color; 
+            console.log(this.colorVal)
 
         }
         
     },
     computed:{
-       logs(){
-         l = [
-            {
-                date : '2022-02-01',
-                day : 'Monday',
-                section : 1,
-                gitRepo : 'https://github.com/',
-                pregress: 80,
-                topics : ['overvieew' , 'lifecycle' , 'events']
-            },
-            {
-                date : '2022-02-02',
-                day : 'Tuesday',
-                section : 2,
-                gitRepo : 'https://github.com/',
-                pregress: 40,
-                topics : ['mehtod','computed','events','watchs','propes','styling']
-            },
-            {
-                date : '2022-02-03',
-                day : 'Wednesday',
-                section : 3,
-                gitRepo : 'https://github.com/',
-                pregress: 10,
-                topics : ['overvieew','lifecycle','events','watchs','propes','styling','props']
-            },
-        ]
-        return l
-       } ,
-       col2(){
-        l = [
-            {
-                date : '2022-02-01',
-                day : 'Monday',
-                section : 1,
-                gitRepo : 'https://github.com/',
-                pregress: 80,
-                topics : ['overvieew' , 'lifecycle' , 'events']
-            },
-            {
-                date : '2022-02-02',
-                day : 'Tuesday',
-                section : 2,
-                gitRepo : 'https://github.com/',
-                pregress: 40,
-                topics : ['mehtod','computed','events','watchs','propes','styling']
-            },
-            {
-                date : '2022-02-03',
-                day : 'Wednesday',
-                section : 3,
-                gitRepo : 'https://github.com/',
-                pregress: 10,
-                topics : ['overvieew','lifecycle','events','watchs','propes','styling','props']
-            },
-        ]
-           let max2=0;      
-           for(let i=0;i<l.length;i++){
-               
-               if(l[i].topics.length>max2){
-                   max2 = l[i].topics.length
-                   
-               }   
-           }
-          return max2
+       
+       colspanValue(){
+        let l = this.allLogs
+        let maxColspan=0;      
+        l.forEach((obj)=>{
+            if(obj.topics.length>maxColspan){
+                maxColspan=obj.topics.length
+            }
+        })   
+        return maxColspan
        }
        
        

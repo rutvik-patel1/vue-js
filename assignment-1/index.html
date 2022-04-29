@@ -10,32 +10,29 @@
     <div id="app">
 
       <div class="header">
-        <h1 :style="{backgroundColor:colorval,color: textcolor}">-:Daily Logs:-</h1>
+        <h1 :style="{backgroundColor:colorVal,color: textColor}">-:Daily Logs:-</h1>
         <label>Choose color: </label>
-        <select name="colors" id="colors" v-on:change="updateColor($event)">
-            <option value="white">Default</option>  
-            <option value="red">RED</option>
-            <option value="blue">BLUE</option>
-            <option value="green">GREEN</option>
-            <option value="yellow">YELLOW</option>
+        <select name="colors" id="colors" @change="updateColor($event)">
+            <option v-for="(color,index) in colors" :value="color" :key="index" >{{color.toUpperCase()}}</option>  
+            
         </select>
       </div>
       <div class="content">
-        <table :style="{backgroundColor: colorval , color: textcolor}">
+        <table :style="{backgroundColor: colorVal , color: textColor}">
           <tr>
               <th>Date</th>
               <th>Day</td>
               <th>Section</td>
               <th>Git Repo</th>
               <th>Progress</th>
-              <th v-bind:colspan="col2">Topics Covered</th>
+              <th :colspan="colspanValue">Topics Covered</th>
           </tr>
-          <tr v-for="log in logs">
+          <tr v-for="(log,index) in allLogs" :key="index">
             <td>{{log.date}}</td>
             <td>{{log.day}}</td>
             <td>{{log.section}}</td>
-            <td>{{log.gitRepo}}</td>
-            <td><progress id="file" v-bind:value="log.pregress" max="100"> {{log.pregress}}%</progress>{{log.pregress}} %</td>
+            <td><a :href="log.gitRepo">{{log.gitRepo}}</a></td>
+            <td><progress id="file" :value="log.pregress" max="100"> {{log.pregress}}%</progress>{{log.pregress}} %</td>
             <td v-for="item in log.topics" >{{item}}</td>
         </tr>
         </table>
